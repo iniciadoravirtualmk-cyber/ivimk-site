@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Acesso Ivi MK</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="card">
+    <h2>Bem-vinda à Ivi MK</h2>
+    <p>Este acesso é exclusivo. Digite o código informado pela sua consultora.</p>
+
+    <input
+      id="senha"
+      type="password"
+      placeholder="Código de acesso"
+      autocomplete="off"
+    />
+
+    <button onclick="entrar()">Entrar</button>
+
+    <p class="note">
+      Acesso pessoal e intransferível. Não compartilhe este endereço.
+    </p>
+  </div>
+
+  <script>
+    function entrar() {
+      const senha = document.getElementById("senha").value;
+      const SENHA_CORRETA = "IVI2025";
+
+      if (senha === SENHA_CORRETA) {
+        window.location.href =
+          "https://chatgpt.com/g/g-692cda6e89888191a5a932e29159bafe-teste-iniciadora-virtual-mk-ivi";
+      } else {
+        alert("Código incorreto. Verifique com sua consultora.");
+      }
+    }
+  </script>
+</body>
+</html>
