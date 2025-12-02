@@ -8,34 +8,66 @@
 <body>
   <div class="card">
     <h2>Bem-vinda à Ivi MK</h2>
-    <p>Este acesso é exclusivo. Digite o código informado pela sua consultora.</p>
+    <p>Digite o mesmo e-mail que você informou no formulário após a compra.</p>
 
     <input
-      id="senha"
-      type="password"
-      placeholder="Código de acesso"
+      id="email"
+      type="email"
+      placeholder="seuemail@exemplo.com"
       autocomplete="off"
     />
 
     <button onclick="entrar()">Entrar</button>
 
-    <p class="note">
-      Acesso pessoal e intransferível. Não compartilhe este endereço.
-    </p>
+    <p class="note" id="mensagem"></p>
   </div>
 
   <script>
-    function entrar() {
-      const senha = document.getElementById("senha").value;
-      const SENHA_CORRETA = "IVI2025";
+    // COLE AQUI A URL DO SEU SCRIPT
+    const SCRIPT_URL = "https://script.google.com/macros/s/SEU_ID_AQUI/exec";
 
-      if (senha === SENHA_CORRETA) {
-        window.location.href =
-          "https://chatgpt.com/g/g-692cda6e89888191a5a932e29159bafe-teste-iniciadora-virtual-mk-ivi";
-      } else {
-        alert("Código incorreto. Verifique com sua consultora.");
+    const IVI_URL =
+      "https://chatgpt.com/g/g-692cda6e89888191a5a932e29159bafe-teste-iniciadora-virtual-mk-ivi";
+
+    async function entrar() {
+      const emailInput = document.getElementById("email");
+      const msg = document.getElementById("mensagem");
+
+      const email = (emailInput.value || "").trim().toLowerCase();
+
+      if (!email) {
+        msg.textContent = "Por favor, informe seu e-mail.";
+        msg.style.color = "#b00020";
+        return;
+      }
+
+      msg.textContent = "Verificando seu acesso, aguarde...";
+      msg.style.color = "#7b3b4a";
+
+      try {
+        const url = SCRIPT_URL + "?email=" + encodeURIComponent(email);
+        const resp = await fetch(url);
+        const data = await resp.json();
+
+        if (data.ok) {
+          msg.textContent = "Acesso liberado! Redirecionando para a Ivi...";
+          msg.style.color = "#2e7d32";
+          setTimeout(() => {
+            window.location.href = IVI_URL;
+          }, 800);
+        } else {
+          msg.textContent =
+            "Não encontramos este e-mail na lista de acesso. Verifique se digitou corretamente ou fale com sua consultora.";
+          msg.style.color = "#b00020";
+        }
+      } catch (e) {
+        console.error(e);
+        msg.textContent =
+          "Ocorreu um erro ao validar seu acesso. Tente novamente em alguns minutos.";
+        msg.style.color = "#b00020";
       }
     }
   </script>
 </body>
 </html>
+
