@@ -1,186 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assinatura Ivi MK</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assinatura Ivi MK</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: #fef3c7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#fef3c7;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 26px 28px;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-      max-width: 380px;
-      width: 100%;
-      text-align: center;
-      border: 2px solid #fbbf24;
-    }
+.card {
+  background:#fff;
+  padding:30px;
+  border-radius:16px;
+  width:360px;
+  text-align:center;
+  border:2px solid #f59e0b;
+}
 
-    h1 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #b45309;
-    }
+input {
+  width:100%;
+  padding:12px;
+  border-radius:20px;
+  border:1px solid #ccc;
+  margin-bottom:12px;
+}
 
-    p {
-      font-size: 0.9rem;
-      color: #6b7280;
-      margin-bottom: 18px;
-    }
+button {
+  width:100%;
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+}
 
-    input {
-      width: 100%;
-      padding: 11px 14px;
-      border-radius: 999px;
-      border: 1px solid #d1d5db;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-      outline: none;
-    }
+#validate {
+  background:#f97316;
+}
 
-    input:focus {
-      border-color: #f59e0b;
-      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3);
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      border-radius: 999px;
-      border: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #fff;
-      background: linear-gradient(90deg, #f97316, #ea580c);
-      cursor: pointer;
-      margin-top: 6px;
-    }
-
-    button.secondary {
-      background: linear-gradient(90deg, #22c55e, #16a34a);
-      margin-top: 14px;
-    }
-
-    .msg {
-      font-size: 0.85rem;
-      margin-top: 12px;
-      min-height: 18px;
-    }
-
-    .success { color: #15803d; }
-    .error { color: #b91c1c; }
-
-    small {
-      display: block;
-      margin-top: 16px;
-      font-size: 0.72rem;
-      color: #9ca3af;
-    }
-  </style>
+#access {
+  background:#22c55e;
+  margin-top:12px;
+  opacity:0.5;
+  cursor:not-allowed;
+}
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Assinatura Ivi MK</h1>
+<div class="card">
+  <h2>Assinatura Ivi MK</h2>
 
-    <p>
-      Digite o e-mail cadastrado na sua assinatura para liberar o acesso à sua mentora virtual.
-    </p>
+  <input id="email" type="email" placeholder="seuemail@exemplo.com">
 
-    <form id="access-form">
-      <input
-        type="email"
-        id="email"
-        placeholder="seuemail@exemplo.com"
-        required
-      />
-      <button type="submit">Validar acesso</button>
-    </form>
+  <button id="validate">Validar acesso</button>
 
-    <div id="message" class="msg"></div>
+  <p id="msg"></p>
 
-    <!-- LINK + BOTÃO (COMEÇA ESCONDIDO) -->
-    <a
-      id="access-link"
-      href="https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk"
-      target="_blank"
-      rel="noopener noreferrer"
-      style="display:none; text-decoration:none;"
-    >
-      <button type="button" class="secondary">
-        👉 Acessar Ivi MK agora
-      </button>
-    </a>
+  <!-- BOTÃO SEMPRE EXISTE -->
+  <button id="access" disabled>
+    👉 Acessar Ivi MK
+  </button>
+</div>
 
-    <small>
-      💡 Dica: para melhor experiência, use o aplicativo do ChatGPT no celular.
-    </small>
-  </div>
+<script>
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
 
- <script>
-  const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
+const GPT_URL =
+"https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk";
 
-  const form = document.getElementById("access-form");
-  const emailInput = document.getElementById("email");
-  const msgEl = document.getElementById("message");
-  const accessLink = document.getElementById("access-link");
+const validateBtn = document.getElementById("validate");
+const accessBtn = document.getElementById("access");
+const msg = document.getElementById("msg");
+const emailInput = document.getElementById("email");
 
-  function isAuthorized(value) {
-    if (value === true) return true;
-    if (typeof value === "string") {
-      const v = value.toLowerCase().trim();
-      return v === "true" || v === "sim" || v === "ok" || v === "autorizado";
-    }
-    return false;
+validateBtn.onclick = async () => {
+  const email = emailInput.value.trim().toLowerCase();
+  if (!email) return;
+
+  msg.innerText = "Verificando...";
+
+  const res = await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(email)}`);
+  const data = await res.json();
+
+  if (String(data.authorized).toLowerCase() === "true" || data.authorized === true) {
+    msg.innerText = "✅ Acesso liberado!";
+    accessBtn.disabled = false;
+    accessBtn.style.opacity = "1";
+    accessBtn.style.cursor = "pointer";
+  } else {
+    msg.innerText = data.message || "Não autorizado.";
   }
+};
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const email = emailInput.value.trim().toLowerCase();
-    if (!email) return;
-
-    msgEl.textContent = "Verificando assinatura...";
-    msgEl.className = "msg";
-    accessLink.style.display = "none";
-
-    try {
-      const res = await fetch(
-        `${SCRIPT_URL}?email=${encodeURIComponent(email)}`
-      );
-      const data = await res.json();
-
-      if (isAuthorized(data.authorized)) {
-        msgEl.textContent =
-          data.message || "✅ Acesso liberado! Clique no botão abaixo.";
-        msgEl.className = "msg success";
-        accessLink.style.display = "block";
-      } else {
-        msgEl.textContent =
-          data.message || "Este e-mail ainda não está autorizado.";
-        msgEl.className = "msg error";
-        accessLink.style.display = "none";
-      }
-    } catch (err) {
-      msgEl.textContent = "Erro ao validar. Tente novamente.";
-      msgEl.className = "msg error";
-      accessLink.style.display = "none";
-    }
-  });
+accessBtn.onclick = () => {
+  window.open(GPT_URL, "_blank");
+};
 </script>
-
 </body>
 </html>
