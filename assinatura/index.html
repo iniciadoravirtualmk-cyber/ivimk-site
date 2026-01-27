@@ -187,7 +187,7 @@
           msgEl.textContent = "E-mail autorizado! Redirecionando para a Ivi...";
           msgEl.className = "msg success";
           setTimeout(() => {
-            window.location.href = IVI_ASSINATURA_URL;
+            window.top.location.href = IVI_ASSINATURA_URL;
           }, 800);
         } else {
           msgEl.textContent =
