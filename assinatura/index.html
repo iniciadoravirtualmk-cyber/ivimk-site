@@ -92,18 +92,26 @@ validateBtn.onclick = async () => {
   const res = await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(email)}`);
   const data = await res.json();
 
-  if (String(data.authorized).toLowerCase() === "true" || data.authorized === true) {
+  const text =
+    (data.message || "") + " " + (data.authorized || "");
+
+  if (text.toLowerCase().includes("liberado")) {
     msg.innerText = "✅ Acesso liberado!";
     accessBtn.disabled = false;
     accessBtn.style.opacity = "1";
     accessBtn.style.cursor = "pointer";
   } else {
     msg.innerText = data.message || "Não autorizado.";
+    accessBtn.disabled = true;
+    accessBtn.style.opacity = "0.5";
+    accessBtn.style.cursor = "not-allowed";
   }
 };
 
 accessBtn.onclick = () => {
-  window.open(GPT_URL, "_blank");
+  if (!accessBtn.disabled) {
+    window.open(GPT_URL, "_blank");
+  }
 };
 </script>
 </body>
