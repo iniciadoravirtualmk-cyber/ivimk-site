@@ -65,20 +65,11 @@
       color: #fff;
       background: linear-gradient(90deg, #f97316, #ea580c);
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(234, 88, 12, 0.35);
-      opacity: 0.95;
     }
 
     button:disabled {
       opacity: 0.7;
       cursor: default;
-      box-shadow: none;
-      transform: none;
     }
 
     .msg {
@@ -108,9 +99,7 @@
     }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
 
     small {
@@ -121,6 +110,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="card">
     <h1>Assinatura Ivi MK</h1>
@@ -130,26 +120,36 @@
       <input
         type="email"
         id="email"
-        name="email"
         placeholder="seuemail@exemplo.com"
-        autocomplete="email"
         required
       />
-      <button type="submit" id="submit-btn">
-        Entrar
-      </button>
+      <button type="submit" id="submit-btn">Entrar</button>
     </form>
 
     <div id="message" class="msg"></div>
-    <small>Acesso pessoal e intransferível. Não compartilhe seu e-mail.</small>
+    <small>Acesso pessoal e intransferível.</small>
   </div>
 
   <script>
-    // 🔗 SUBSTITUA pelo URL do Apps Script DA ASSINATURA
-    const SCRIPT_URL_ASSINATURA = "https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
+    const SCRIPT_URL_ASSINATURA =
+      "https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
 
-    // 🔗 Link da Ivi (versão assinantes)
-    const IVI_ASSINATURA_URL = "https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk";
+    const IVI_ASSINATURA_URL =
+      "https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk";
+
+    function redirectToIvi(url) {
+      try {
+        if (window.top && window.top !== window.self) {
+          window.top.location.href = url;
+          return;
+        }
+      } catch (e) {}
+
+      const win = window.open(url, "_blank");
+      if (win) return;
+
+      window.location.href = url;
+    }
 
     const form = document.getElementById("access-form");
     const emailInput = document.getElementById("email");
@@ -160,43 +160,30 @@
       e.preventDefault();
 
       const email = emailInput.value.trim().toLowerCase();
-      if (!email) {
-        msgEl.textContent = "Por favor, preencha o e-mail.";
-        msgEl.className = "msg error";
-        return;
-      }
+      if (!email) return;
 
       try {
         btn.disabled = true;
         btn.innerHTML = '<span class="loader"></span>Verificando...';
         msgEl.textContent = "";
-        msgEl.className = "msg";
 
-        const res = await fetch(
-          `${SCRIPT_URL_ASSINATURA}?email=${encodeURIComponent(email)}`,
-          { method: "GET" }
-        );
-
-        if (!res.ok) {
-          throw new Error("Erro ao conectar. Tente novamente em alguns instantes.");
-        }
-
+        const res = await fetch(`${SCRIPT_URL_ASSINATURA}?email=${encodeURIComponent(email)}`);
         const data = await res.json();
 
         if (data.authorized) {
-          msgEl.textContent = "E-mail autorizado! Redirecionando para a Ivi...";
+          msgEl.textContent = "E-mail autorizado! Abrindo a Ivi...";
           msgEl.className = "msg success";
+
           setTimeout(() => {
-            window.top.location.href = IVI_ASSINATURA_URL;
-          }, 800);
+            redirectToIvi(IVI_ASSINATURA_URL);
+          }, 600);
         } else {
           msgEl.textContent =
-            data.message ||
-            "Este e-mail ainda não está autorizado na assinatura. Verifique se digitou corretamente ou aguarde a confirmação do pagamento.";
+            data.message || "E-mail não autorizado.";
           msgEl.className = "msg error";
         }
       } catch (err) {
-        msgEl.textContent = err.message || "Ocorreu um erro. Tente novamente.";
+        msgEl.textContent = "Erro ao validar. Tente novamente.";
         msgEl.className = "msg error";
       } finally {
         btn.disabled = false;
@@ -206,4 +193,3 @@
   </script>
 </body>
 </html>
-
