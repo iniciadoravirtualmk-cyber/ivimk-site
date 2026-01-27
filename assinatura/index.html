@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ivi MK - Assinatura Mensal</title>
-  <link rel="stylesheet" href="../estilos.css" />
+
   <style>
     body {
       margin: 0;
@@ -20,9 +20,9 @@
     .card {
       background: #fff;
       border-radius: 16px;
-      padding: 24px 28px;
+      padding: 26px 28px;
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-      max-width: 360px;
+      max-width: 380px;
       width: 100%;
       text-align: center;
       border: 2px solid #fbbf24;
@@ -30,34 +30,34 @@
 
     h1 {
       font-size: 1.4rem;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: #b45309;
     }
 
     p {
       font-size: 0.9rem;
       color: #6b7280;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
-    input[type="email"] {
+    input {
       width: 100%;
-      padding: 10px 12px;
+      padding: 11px 14px;
       border-radius: 999px;
       border: 1px solid #d1d5db;
       font-size: 0.9rem;
-      outline: none;
       margin-bottom: 12px;
+      outline: none;
     }
 
-    input[type="email"]:focus {
+    input:focus {
       border-color: #f59e0b;
       box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3);
     }
 
     button {
       width: 100%;
-      padding: 10px 12px;
+      padding: 11px;
       border-radius: 999px;
       border: none;
       font-weight: 600;
@@ -65,47 +65,28 @@
       color: #fff;
       background: linear-gradient(90deg, #f97316, #ea580c);
       cursor: pointer;
+      margin-top: 6px;
     }
 
-    button:disabled {
-      opacity: 0.7;
-      cursor: default;
+    button.secondary {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      display: none;
+      margin-top: 12px;
     }
 
     .msg {
       font-size: 0.85rem;
-      margin-top: 10px;
+      margin-top: 12px;
       min-height: 18px;
     }
 
-    .msg.error {
-      color: #b91c1c;
-    }
-
-    .msg.success {
-      color: #15803d;
-    }
-
-    .loader {
-      display: inline-block;
-      width: 14px;
-      height: 14px;
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      border-top-color: #fff;
-      border-radius: 999px;
-      animation: spin 0.7s linear infinite;
-      margin-right: 6px;
-      vertical-align: -2px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    .success { color: #15803d; }
+    .error { color: #b91c1c; }
 
     small {
       display: block;
-      margin-top: 10px;
-      font-size: 0.7rem;
+      margin-top: 14px;
+      font-size: 0.72rem;
       color: #9ca3af;
     }
   </style>
@@ -114,7 +95,9 @@
 <body>
   <div class="card">
     <h1>Assinatura Ivi MK</h1>
-    <p>Digite o e-mail cadastrado na sua assinatura mensal para liberar o acesso à Ivi.</p>
+    <p>
+      Digite o e-mail cadastrado na sua assinatura para liberar o acesso à sua mentora virtual.
+    </p>
 
     <form id="access-form">
       <input
@@ -123,38 +106,36 @@
         placeholder="seuemail@exemplo.com"
         required
       />
-      <button type="submit" id="submit-btn">Entrar</button>
+      <button type="submit" id="validate-btn">Validar acesso</button>
     </form>
 
     <div id="message" class="msg"></div>
-    <small>Acesso pessoal e intransferível.</small>
+
+    <!-- BOTÃO QUE SÓ APARECE SE AUTORIZADO -->
+    <a
+      id="access-link"
+      href="https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <button class="secondary">
+        👉 Acessar Ivi MK agora
+      </button>
+    </a>
+
+    <small>
+      💡 Dica: para melhor experiência, use o aplicativo do ChatGPT no celular.
+    </small>
   </div>
 
   <script>
-    const SCRIPT_URL_ASSINATURA =
+    const SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
-
-    const IVI_ASSINATURA_URL =
-      "https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk";
-
-    function redirectToIvi(url) {
-      try {
-        if (window.top && window.top !== window.self) {
-          window.top.location.href = url;
-          return;
-        }
-      } catch (e) {}
-
-      const win = window.open(url, "_blank");
-      if (win) return;
-
-      window.location.href = url;
-    }
 
     const form = document.getElementById("access-form");
     const emailInput = document.getElementById("email");
     const msgEl = document.getElementById("message");
-    const btn = document.getElementById("submit-btn");
+    const accessBtn = document.querySelector(".secondary");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -162,32 +143,26 @@
       const email = emailInput.value.trim().toLowerCase();
       if (!email) return;
 
-      try {
-        btn.disabled = true;
-        btn.innerHTML = '<span class="loader"></span>Verificando...';
-        msgEl.textContent = "";
+      msgEl.textContent = "Verificando assinatura...";
+      msgEl.className = "msg";
 
-        const res = await fetch(`${SCRIPT_URL_ASSINATURA}?email=${encodeURIComponent(email)}`);
+      try {
+        const res = await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(email)}`);
         const data = await res.json();
 
         if (data.authorized) {
-          msgEl.textContent = "E-mail autorizado! Abrindo a Ivi...";
+          msgEl.textContent = "✅ Acesso liberado! Clique no botão abaixo.";
           msgEl.className = "msg success";
-
-          setTimeout(() => {
-            redirectToIvi(IVI_ASSINATURA_URL);
-          }, 600);
+          accessBtn.style.display = "block";
         } else {
           msgEl.textContent =
-            data.message || "E-mail não autorizado.";
+            data.message || "Este e-mail ainda não está autorizado.";
           msgEl.className = "msg error";
+          accessBtn.style.display = "none";
         }
       } catch (err) {
         msgEl.textContent = "Erro ao validar. Tente novamente.";
         msgEl.className = "msg error";
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = "Entrar";
       }
     });
   </script>
