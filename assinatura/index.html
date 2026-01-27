@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ivi MK - Assinatura Mensal</title>
+  <title>Assinatura Ivi MK</title>
 
   <style>
     body {
@@ -57,7 +57,7 @@
 
     button {
       width: 100%;
-      padding: 11px;
+      padding: 12px;
       border-radius: 999px;
       border: none;
       font-weight: 600;
@@ -70,8 +70,7 @@
 
     button.secondary {
       background: linear-gradient(90deg, #22c55e, #16a34a);
-      display: none;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .msg {
@@ -85,7 +84,7 @@
 
     small {
       display: block;
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: 0.72rem;
       color: #9ca3af;
     }
@@ -95,6 +94,7 @@
 <body>
   <div class="card">
     <h1>Assinatura Ivi MK</h1>
+
     <p>
       Digite o e-mail cadastrado na sua assinatura para liberar o acesso à sua mentora virtual.
     </p>
@@ -106,19 +106,20 @@
         placeholder="seuemail@exemplo.com"
         required
       />
-      <button type="submit" id="validate-btn">Validar acesso</button>
+      <button type="submit">Validar acesso</button>
     </form>
 
     <div id="message" class="msg"></div>
 
-    <!-- BOTÃO QUE SÓ APARECE SE AUTORIZADO -->
+    <!-- LINK + BOTÃO (COMEÇA ESCONDIDO) -->
     <a
       id="access-link"
       href="https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk"
       target="_blank"
       rel="noopener noreferrer"
+      style="display:none; text-decoration:none;"
     >
-      <button class="secondary">
+      <button type="button" class="secondary">
         👉 Acessar Ivi MK agora
       </button>
     </a>
@@ -135,7 +136,7 @@
     const form = document.getElementById("access-form");
     const emailInput = document.getElementById("email");
     const msgEl = document.getElementById("message");
-    const accessBtn = document.querySelector(".secondary");
+    const accessLink = document.getElementById("access-link");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -147,22 +148,25 @@
       msgEl.className = "msg";
 
       try {
-        const res = await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(email)}`);
+        const res = await fetch(
+          `${SCRIPT_URL}?email=${encodeURIComponent(email)}`
+        );
         const data = await res.json();
 
         if (data.authorized) {
           msgEl.textContent = "✅ Acesso liberado! Clique no botão abaixo.";
           msgEl.className = "msg success";
-          accessBtn.style.display = "block";
+          accessLink.style.display = "block";
         } else {
           msgEl.textContent =
             data.message || "Este e-mail ainda não está autorizado.";
           msgEl.className = "msg error";
-          accessBtn.style.display = "none";
+          accessLink.style.display = "none";
         }
       } catch (err) {
         msgEl.textContent = "Erro ao validar. Tente novamente.";
         msgEl.className = "msg error";
+        accessLink.style.display = "none";
       }
     });
   </script>
