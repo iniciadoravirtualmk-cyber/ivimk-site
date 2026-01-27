@@ -129,46 +129,58 @@
     </small>
   </div>
 
-  <script>
-    const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
+ <script>
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
 
-    const form = document.getElementById("access-form");
-    const emailInput = document.getElementById("email");
-    const msgEl = document.getElementById("message");
-    const accessLink = document.getElementById("access-link");
+  const form = document.getElementById("access-form");
+  const emailInput = document.getElementById("email");
+  const msgEl = document.getElementById("message");
+  const accessLink = document.getElementById("access-link");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  function isAuthorized(value) {
+    if (value === true) return true;
+    if (typeof value === "string") {
+      const v = value.toLowerCase().trim();
+      return v === "true" || v === "sim" || v === "ok" || v === "autorizado";
+    }
+    return false;
+  }
 
-      const email = emailInput.value.trim().toLowerCase();
-      if (!email) return;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      msgEl.textContent = "Verificando assinatura...";
-      msgEl.className = "msg";
+    const email = emailInput.value.trim().toLowerCase();
+    if (!email) return;
 
-      try {
-        const res = await fetch(
-          `${SCRIPT_URL}?email=${encodeURIComponent(email)}`
-        );
-        const data = await res.json();
+    msgEl.textContent = "Verificando assinatura...";
+    msgEl.className = "msg";
+    accessLink.style.display = "none";
 
-        if (data.authorized) {
-          msgEl.textContent = "✅ Acesso liberado! Clique no botão abaixo.";
-          msgEl.className = "msg success";
-          accessLink.style.display = "block";
-        } else {
-          msgEl.textContent =
-            data.message || "Este e-mail ainda não está autorizado.";
-          msgEl.className = "msg error";
-          accessLink.style.display = "none";
-        }
-      } catch (err) {
-        msgEl.textContent = "Erro ao validar. Tente novamente.";
+    try {
+      const res = await fetch(
+        `${SCRIPT_URL}?email=${encodeURIComponent(email)}`
+      );
+      const data = await res.json();
+
+      if (isAuthorized(data.authorized)) {
+        msgEl.textContent =
+          data.message || "✅ Acesso liberado! Clique no botão abaixo.";
+        msgEl.className = "msg success";
+        accessLink.style.display = "block";
+      } else {
+        msgEl.textContent =
+          data.message || "Este e-mail ainda não está autorizado.";
         msgEl.className = "msg error";
         accessLink.style.display = "none";
       }
-    });
-  </script>
+    } catch (err) {
+      msgEl.textContent = "Erro ao validar. Tente novamente.";
+      msgEl.className = "msg error";
+      accessLink.style.display = "none";
+    }
+  });
+</script>
+
 </body>
 </html>
