@@ -1,158 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assinatura Ivi MK</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assinatura Ivi MK</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fef3c7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#fef3c7;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
 
-    .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      width: 360px;
-      text-align: center;
-      border: 2px solid #f59e0b;
-    }
+.card {
+  background:#fff;
+  padding:30px;
+  border-radius:16px;
+  width:360px;
+  text-align:center;
+  border:2px solid #f59e0b;
+}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-      margin-bottom: 12px;
-    }
+input {
+  width:100%;
+  padding:12px;
+  border-radius:20px;
+  border:1px solid #ccc;
+  margin-bottom:12px;
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      border-radius: 20px;
-      border: none;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-    }
+button {
+  width:100%;
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+}
 
-    #validate {
-      background: #f97316;
-    }
+#validate {
+  background:#f97316;
+}
 
-    #access {
-      background: #22c55e;
-      margin-top: 12px;
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    #msg {
-      margin-top: 10px;
-      min-height: 20px;
-    }
-  </style>
+#access {
+  background:#22c55e;
+  margin-top:12px;
+  opacity:0.5;
+  cursor:not-allowed;
+}
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <h2>Assinatura Ivi MK</h2>
+<div class="card">
+  <h2>Assinatura Ivi MK</h2>
 
-    <input
-      id="email"
-      type="email"
-      placeholder="seuemail@exemplo.com"
-      autocomplete="email"
-    />
+  <input id="email" type="email" placeholder="seuemail@exemplo.com">
 
-    <button id="validate">Validar acesso</button>
+  <button id="validate">Validar acesso</button>
 
-    <p id="msg"></p>
+  <p id="msg"></p>
 
-    <button id="access" disabled>
-      👉 Acessar Ivi MK
-    </button>
-  </div>
+  <!-- BOTÃO SEMPRE EXISTE -->
+  <button id="access" disabled>
+    👉 Acessar Ivi MK
+  </button>
+</div>
 
-  <script>
-    // ===============================
-    // CONFIGURAÇÕES
-    // ===============================
-    const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbw2WpZo__DLSnGm5dJ8NKHwGu9CPYz_mfhWhP7EUSRjU5LkrLOzYZlx7nfpv8FWiXTh/exec";
+<script>
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbx8TAGgLV749zma8eO2UUqf-wZTIOxa_xQG_bTofcfAEhIIucoY3hYr3LCGBA82DS_a/exec";
 
-    const GPT_URL =
-      "https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk";
+const GPT_URL =
+"https://chatgpt.com/g/g-6924ec5fa3ec81919f6e0ec34bbe3e4d-iniciadora-virtual-mk";
 
-    // ===============================
-    // ELEMENTOS
-    // ===============================
-    const validateBtn = document.getElementById("validate");
-    const accessBtn = document.getElementById("access");
-    const msg = document.getElementById("msg");
-    const emailInput = document.getElementById("email");
+const validateBtn = document.getElementById("validate");
+const accessBtn = document.getElementById("access");
+const msg = document.getElementById("msg");
+const emailInput = document.getElementById("email");
 
-    // ===============================
-    // FUNÇÕES AUXILIARES
-    // ===============================
-    function bloquearAcesso(mensagem) {
-      msg.innerText = mensagem || "Não autorizado.";
-      accessBtn.disabled = true;
-      accessBtn.style.opacity = "0.5";
-      accessBtn.style.cursor = "not-allowed";
-    }
+validateBtn.onclick = async () => {
+  const email = emailInput.value.trim().toLowerCase();
+  if (!email) return;
 
-    function liberarAcesso() {
-      msg.innerText = "✅ Acesso liberado!";
-      accessBtn.disabled = false;
-      accessBtn.style.opacity = "1";
-      accessBtn.style.cursor = "pointer";
-    }
+  msg.innerText = "Verificando...";
 
-    // ===============================
-    // VALIDAÇÃO
-    // ===============================
-    validateBtn.addEventListener("click", async () => {
-      const email = emailInput.value.trim().toLowerCase();
+  const res = await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(email)}`);
+  const data = await res.json();
 
-      if (!email) {
-        bloquearAcesso("Digite um e-mail válido.");
-        return;
-      }
+  const text =
+    (data.message || "") + " " + (data.authorized || "");
 
-      msg.innerText = "Verificando...";
+  if (text.toLowerCase().includes("liberado")) {
+    msg.innerText = "✅ Acesso liberado!";
+    accessBtn.disabled = false;
+    accessBtn.style.opacity = "1";
+    accessBtn.style.cursor = "pointer";
+  } else {
+    msg.innerText = data.message || "Não autorizado.";
+    accessBtn.disabled = true;
+    accessBtn.style.opacity = "0.5";
+    accessBtn.style.cursor = "not-allowed";
+  }
+};
 
-      try {
-        const response = await fetch(
-          `${SCRIPT_URL}?email=${encodeURIComponent(email)}`
-        );
+accessBtn.onclick = () => {
+  if (!accessBtn.disabled) {
+    window.open(GPT_URL, "_blank");
+  }
+};
+</script>
 
-        const data = await response.json();
-
-        if (data.authorized === true) {
-          liberarAcesso();
-        } else {
-          bloquearAcesso(data.message);
-        }
-      } catch (error) {
-        bloquearAcesso("Erro ao validar acesso. Tente novamente.");
-      }
-    });
-
-    // ===============================
-    // ACESSO FINAL
-    // ===============================
-    accessBtn.addEventListener("click", () => {
-      if (!accessBtn.disabled) {
-        window.open(GPT_URL, "_blank");
-      }
-    });
-  </script>
 </body>
 </html>
