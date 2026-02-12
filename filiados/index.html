@@ -9,49 +9,27 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body {
-      box-sizing: border-box;
-    }
+    body { box-sizing: border-box; }
 
     @keyframes pulse-glow {
-      0%, 100% {
-        box-shadow: 0 0 20px rgba(219, 39, 119, 0.3);
-      }
-      50% {
-        box-shadow: 0 0 40px rgba(219, 39, 119, 0.6);
-      }
+      0%, 100% { box-shadow: 0 0 20px rgba(219, 39, 119, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(219, 39, 119, 0.6); }
     }
-
-    .pulse-glow {
-      animation: pulse-glow 2s ease-in-out infinite;
-    }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
+    .float-animation { animation: float 3s ease-in-out infinite; }
 
-    .float-animation {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .card-hover {
-      transition: all 0.3s ease;
-    }
-
+    .card-hover { transition: all 0.3s ease; }
     .card-hover:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
 
-    .price-strike {
-      position: relative;
-    }
-
+    .price-strike { position: relative; }
     .price-strike::after {
       content: '';
       position: absolute;
@@ -63,11 +41,7 @@
       transform: rotate(-5deg);
     }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    html, body { height: 100%; margin: 0; padding: 0; }
   </style>
 </head>
 
@@ -85,9 +59,15 @@
         <h1 id="main-title" class="text-5xl md:text-7xl font-bold mb-6" style="color: #db2777;">
           Conheça a Ivi MK
         </h1>
-        <p id="subtitle" class="text-2xl md:text-3xl mb-8" style="color: #831843;">
+        <p id="subtitle" class="text-2xl md:text-3xl mb-5" style="color: #831843;">
           Sua Mentora Executiva Mary Kay 24h por dia
         </p>
+
+        <!-- MELHORIA: frase ultra clara (clareza nos 5s iniciais) -->
+        <p class="text-lg md:text-xl font-semibold mb-8" style="color:#9d174d;">
+          Mentoria executiva com IA, criada para Consultoras, DIQs e Diretoras — com estratégia, metas e scripts prontos.
+        </p>
+
         <p class="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed" style="color: #4b5563;">
           A primeira inteligência artificial treinada especialmente para consultoras, DIQs e diretoras Mary Kay — com base
           nos documentos oficiais da empresa e no legado de Mary Kay Ash.
@@ -112,30 +92,12 @@
             Ela não é um chatbot genérico. Ela foi <strong style="color: #db2777;">treinada exclusivamente</strong> com base em:
           </p>
           <ul class="text-lg md:text-xl space-y-3 mb-6" style="color: #6b7280;">
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Plano de Carreira e Compensação Oficial Mary Kay Brasil</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Requisitos de DIQ (Diretora em Qualificação), Troféu Sobre Rodas, Carro Rosa</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Níveis de Diretoria e Estrelas de Desempenho</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Estrutura de liderança e viagens top</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Filosofia de Mary Kay Ash</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Experiências práticas de campo</span>
-            </li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Plano de Carreira e Compensação Oficial Mary Kay Brasil</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Requisitos de DIQ (Diretora em Qualificação), Troféu Sobre Rodas, Carro Rosa</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Níveis de Diretoria e Estrelas de Desempenho</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Estrutura de liderança e viagens top</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Filosofia de Mary Kay Ash</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Experiências práticas de campo</span></li>
           </ul>
           <p class="text-xl md:text-2xl leading-relaxed font-semibold text-center" style="color: #831843;">
             Ela não alucina. Ela não inventa. Ela orienta com verdade, estratégia e humanidade.
@@ -151,77 +113,62 @@
           ✨ 8 recursos que fazem da Ivi MK a sua melhor aliada
         </h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          <!-- Recurso 1 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">🎯</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">1. Análise de Perfil Personalizada</h3>
             <p class="text-lg leading-relaxed" style="color: #4b5563;">
-              A Ivi identifica exatamente em que momento da carreira você está — e monta um plano sob medida para o seu
-              próximo passo.
+              A Ivi identifica exatamente em que momento da carreira você está — e monta um plano sob medida para o seu próximo passo.
             </p>
           </div>
 
-          <!-- Recurso 2 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">📊</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">2. Metas Baseadas em Dados Reais</h3>
             <p class="text-lg leading-relaxed" style="color: #4b5563;">
-              Ela calcula metas de vendas, produção, recrutamento e qualificação com base nos requisitos oficiais —
-              sem achismo, sem fantasia.
+              Ela calcula metas de vendas, produção, recrutamento e qualificação com base nos requisitos oficiais — sem achismo, sem fantasia.
             </p>
           </div>
 
-          <!-- Recurso 3 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">📅</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">3. Planejamento Semanal e Mensal</h3>
             <p class="text-lg leading-relaxed" style="color: #4b5563;">
-              A Ivi ajuda você a organizar sua rotina executiva: sessões, follow-ups, reuniões de unidade, eventos e
-              acompanhamento de equipe.
+              A Ivi ajuda você a organizar sua rotina executiva: sessões, follow-ups, reuniões de unidade, eventos e acompanhamento de equipe.
             </p>
           </div>
 
-          <!-- Recurso 4 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">👥</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">4. Gestão de Equipe e Recrutamento</h3>
             <p class="text-lg leading-relaxed" style="color: #4b5563;">
-              Ela orienta como acompanhar suas consultoras, desenvolver futuras DIQs, e estruturar uma unidade forte e
-              produtiva.
+              Ela orienta como acompanhar suas consultoras, desenvolver futuras DIQs, e estruturar uma unidade forte e produtiva.
             </p>
           </div>
 
-          <!-- Recurso 5 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">🚗</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">5. Suporte Completo para DIQs</h3>
             <p class="text-lg leading-relaxed" style="color: #4b5563;">
-              A Ivi acompanha todo o processo: estruturação da unidade, controle de metas mensais, orientação de estreia e
-              preparação para a qualificação oficial.
+              A Ivi acompanha todo o processo: estruturação da unidade, controle de metas mensais, orientação de estreia e preparação para a qualificação oficial.
             </p>
           </div>
 
-          <!-- Recurso 6 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">🏆</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">6. Estratégias de Alto Desempenho</h3>
             <p class="text-lg leading-relaxed" style="color: #4b5563;">
-              Quer Troféu Sobre Rodas? Carro Rosa? Viagem Top? A Ivi traça estratégias reais, com cronogramas e indicadores
-              claros.
+              Quer Troféu Sobre Rodas? Carro Rosa? Viagem Top? A Ivi traça estratégias reais, com cronogramas e indicadores claros.
             </p>
           </div>
 
-          <!-- Recurso 7 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">💬</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">7. Scripts e Copys Prontos</h3>
             <p class="text-lg leading-relaxed" style="color: #4b5563;">
-              Precisa de texto para redes sociais, convites para sessões, apresentação de produtos ou abordagem de
-              recrutamento? A Ivi cria para você.
+              Precisa de texto para redes sociais, convites para sessões, apresentação de produtos ou abordagem de recrutamento? A Ivi cria para você.
             </p>
           </div>
 
-          <!-- Recurso 8 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
             <div class="text-5xl mb-4">📄</div>
             <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">8. Geração de Materiais Profissionais</h3>
@@ -239,12 +186,10 @@
         <h2 class="text-4xl md:text-5xl font-bold text-center mb-12" style="color: #831843;">
           💖 Por que ter a Ivi MK?
         </h2>
+
         <div class="grid md:grid-cols-2 gap-8">
-          <!-- Card 1 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">
-              ✔ Treinada com fontes oficiais Mary Kay
-            </h3>
+            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">✔ Treinada com fontes oficiais Mary Kay</h3>
             <p class="mb-4" style="color: #4b5563;">A Ivi foi alimentada com:</p>
             <ul class="space-y-2" style="color: #6b7280;">
               <li>• Plano de Carreira e Compensação oficial</li>
@@ -256,11 +201,8 @@
             <p class="mt-4 font-semibold" style="color: #831843;">Ela não inventa. Ela sabe.</p>
           </div>
 
-          <!-- Card 2 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">
-              ✔ Orientação para todos os níveis
-            </h3>
+            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">✔ Orientação para todos os níveis</h3>
             <p class="mb-4" style="color: #4b5563;">Seja você:</p>
             <ul class="space-y-2" style="color: #6b7280;">
               <li>• Consultora Iniciante</li>
@@ -276,11 +218,8 @@
             </p>
           </div>
 
-          <!-- Card 3 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">
-              ✔ Acolhimento humano + clareza executiva
-            </h3>
+            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">✔ Acolhimento humano + clareza executiva</h3>
             <p class="mb-4" style="color: #4b5563;">A Ivi conversa com você como uma líder experiente:</p>
             <ul class="space-y-2" style="color: #6b7280;">
               <li>• Acolhe</li>
@@ -290,16 +229,11 @@
               <li>• Puxa para a responsabilidade</li>
               <li>• Celebra conquistas</li>
             </ul>
-            <p class="mt-4 font-semibold" style="color: #831843;">
-              Sempre com base no legado de Mary Kay Ash.
-            </p>
+            <p class="mt-4 font-semibold" style="color: #831843;">Sempre com base no legado de Mary Kay Ash.</p>
           </div>
 
-          <!-- Card 4 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">
-              ✔ Planos reais, metas alcançáveis
-            </h3>
+            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">✔ Planos reais, metas alcançáveis</h3>
             <p class="mb-4" style="color: #4b5563;">A Ivi ajuda você a montar:</p>
             <ul class="space-y-2" style="color: #6b7280;">
               <li>• Metas semanais e mensais</li>
@@ -311,16 +245,11 @@
               <li>• Campanhas inteligentes</li>
               <li>• Cronogramas de alto desempenho</li>
             </ul>
-            <p class="mt-4 font-semibold" style="color: #831843;">
-              Sempre sem fantasia, sem achismo.
-            </p>
+            <p class="mt-4 font-semibold" style="color: #831843;">Sempre sem fantasia, sem achismo.</p>
           </div>
 
-          <!-- Card 5 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">
-              ✔ Domínio completo dos requisitos oficiais
-            </h3>
+            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">✔ Domínio completo dos requisitos oficiais</h3>
             <p class="mb-4" style="color: #4b5563;">A Ivi interpreta e ensina tudo:</p>
             <ul class="space-y-2" style="color: #6b7280;">
               <li>• DIQ (página 27)</li>
@@ -329,16 +258,11 @@
               <li>• Níveis de diretoria</li>
               <li>• Viagens top e premiações</li>
             </ul>
-            <p class="mt-4 font-semibold" style="color: #831843;">
-              E aplica aos seus números em tempo real.
-            </p>
+            <p class="mt-4 font-semibold" style="color: #831843;">E aplica aos seus números em tempo real.</p>
           </div>
 
-          <!-- Card 6 -->
           <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">
-              ✔ Ferramentas profissionais completas
-            </h3>
+            <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">✔ Ferramentas profissionais completas</h3>
             <p class="mb-4" style="color: #4b5563;">A Ivi gera:</p>
             <ul class="space-y-2" style="color: #6b7280;">
               <li>• PDFs de metas e estratégias</li>
@@ -351,17 +275,12 @@
               <li>• Rotinas de liderança</li>
               <li>• Conteúdos exclusivos para DIQs</li>
             </ul>
-            <p class="mt-4 font-semibold" style="color: #831843;">
-              Tudo com identidade visual Mary Kay.
-            </p>
+            <p class="mt-4 font-semibold" style="color: #831843;">Tudo com identidade visual Mary Kay.</p>
           </div>
         </div>
 
-        <!-- Disponibilidade 24h -->
         <div class="mt-8 bg-white rounded-2xl p-8 shadow-lg text-center card-hover">
-          <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">
-            ✔ Disponível 24 horas, todos os dias
-          </h3>
+          <h3 class="text-2xl font-bold mb-4" style="color: #db2777;">✔ Disponível 24 horas, todos os dias</h3>
           <p class="text-lg" style="color: #4b5563;">
             Você não precisa esperar reunião, ligação ou retorno. <br />
             <strong style="color: #831843;">
@@ -398,8 +317,7 @@
               <div>
                 <h3 class="text-xl font-bold mb-2" style="color: #db2777;">Acesse a Ivi Direto no App</h3>
                 <p class="text-lg" style="color: #4b5563;">
-                  Após a compra, você receberá o link de acesso. Abra no app e pronto! A Ivi fica salva dentro do seu
-                  ChatGPT.
+                  Após a compra, você receberá o link de acesso. Abra no app e pronto! A Ivi fica salva dentro do seu ChatGPT.
                 </p>
               </div>
             </div>
@@ -408,33 +326,87 @@
               <div>
                 <h3 class="text-xl font-bold mb-2" style="color: #db2777;">Vantagens de usar pelo App</h3>
                 <ul class="space-y-2 text-lg" style="color: #4b5563;">
-                  <li class="flex items-start">
-                    <span class="mr-2" style="color: #db2777;">•</span>
-                    <span>Não precisa ficar abrindo no navegador toda vez</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="mr-2" style="color: #db2777;">•</span>
-                    <span>A Ivi fica gravada e acessível a qualquer momento</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="mr-2" style="color: #db2777;">•</span>
-                    <span>Experiência mais rápida e fluida</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="mr-2" style="color: #db2777;">•</span>
-                    <span>Histórico de conversas sempre disponível</span>
-                  </li>
+                  <li class="flex items-start"><span class="mr-2" style="color: #db2777;">•</span><span>Não precisa ficar abrindo no navegador toda vez</span></li>
+                  <li class="flex items-start"><span class="mr-2" style="color: #db2777;">•</span><span>A Ivi fica gravada e acessível a qualquer momento</span></li>
+                  <li class="flex items-start"><span class="mr-2" style="color: #db2777;">•</span><span>Experiência mais rápida e fluida</span></li>
+                  <li class="flex items-start"><span class="mr-2" style="color: #db2777;">•</span><span>Histórico de conversas sempre disponível</span></li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="mt-8 p-6 rounded-2xl text-center"
-            style="background: linear-gradient(to right, #fdf2f8, #fce7f3);">
+          <div class="mt-8 p-6 rounded-2xl text-center" style="background: linear-gradient(to right, #fdf2f8, #fce7f3);">
             <p class="text-lg font-semibold" style="color: #831843;">
               💡 É simples, prático e você tem sua mentora sempre no bolso!
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Prova Social / Depoimento -->
+    <section class="w-full py-14 px-6" style="background: linear-gradient(135deg, #ffffff 0%, #fdf2f8 100%);">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="inline-block bg-pink-100 text-pink-700 px-6 py-3 rounded-full font-bold text-lg mb-4">
+            💬 Prova real
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold" style="color:#831843;">
+            Quando a estratégia encontra execução, o resultado aparece
+          </h2>
+          <p class="text-xl md:text-2xl mt-4" style="color:#4b5563;">
+            Um exemplo recente: uma DIQ que virou Diretora em apenas 2 meses usando a Ivi MK como mentora.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border-2" style="border-color:#fbcfe8;">
+          <div class="grid md:grid-cols-3 gap-8 items-center">
+            <div class="md:col-span-1 text-center">
+              <!-- TROQUE O SRC pelo caminho real da imagem no seu servidor -->
+              <img
+                src="https://i.postimg.cc/5twr5Vp9/FOTO-MARA-HTML.jpg"
+                alt="Mara Grazielle Soares"
+                class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full mx-auto shadow-xl border-4"
+                style="border-color:#fbbf24;"
+              />
+              <p class="mt-4 text-lg font-bold" style="color:#831843;">Mara Grazielle Soares</p>
+              <p class="text-sm" style="color:#6b7280;">Diretora de Vendas • Formação em Nov–Dez/2025</p>
+            </div>
+
+            <div class="md:col-span-2">
+              <div class="bg-gradient-to-br from-pink-600 to-pink-800 text-white rounded-2xl p-8 shadow-xl">
+                <p class="text-xl md:text-2xl leading-relaxed font-semibold mb-4">
+                  “Eu me organizei com clareza e executei com consistência.”
+                </p>
+
+                <p class="text-lg md:text-xl leading-relaxed text-pink-100">
+                  Na qualificação como DIQ, usei as estratégias, orientações e scripts gerados pela Ivi MK para planejar
+                  rotina, abordagens, mensagens e acompanhamento. Em apenas 2 meses (Novembro e Dezembro/25), concluí a
+                  qualificação e me formei Diretora de Vendas.
+                </p>
+
+                <div class="mt-6 grid sm:grid-cols-3 gap-4">
+                  <div class="bg-white/15 rounded-xl p-4">
+                    <p class="font-bold text-lg">📌 Organização</p>
+                    <p class="text-pink-100">Plano semanal e metas claras</p>
+                  </div>
+                  <div class="bg-white/15 rounded-xl p-4">
+                    <p class="font-bold text-lg">✍️ Scripts</p>
+                    <p class="text-pink-100">Copys e mensagens prontas</p>
+                  </div>
+                  <div class="bg-white/15 rounded-xl p-4">
+                    <p class="font-bold text-lg">🚀 Execução</p>
+                    <p class="text-pink-100">Acompanhamento e foco diário</p>
+                  </div>
+                </div>
+
+                <p class="mt-6 text-sm text-pink-100 opacity-95">
+                  *Ajuste o texto conforme a autorização e as palavras exatas da Mara, se desejar.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -454,44 +426,28 @@
               Pagamento via PIX • Acesso imediato
             </p>
           </div>
-          <div class="rounded-2xl p-8 mb-8"
-            style="background: linear-gradient(to bottom right, #fdf2f8, #fce7f3);">
+
+          <div class="rounded-2xl p-8 mb-8" style="background: linear-gradient(to bottom right, #fdf2f8, #fce7f3);">
             <h3 class="text-2xl font-bold mb-6 text-center" style="color: #831843;">
               ✨ O que você ganha no teste:
             </h3>
             <ul class="space-y-4 text-lg" style="color: #374151;">
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl" style="color: #db2777;">✓</span>
-                <span><strong style="color: #db2777;">Acesso real à Ivi MK</strong> com todas as funcionalidades</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl" style="color: #db2777;">✓</span>
-                <span><strong style="color: #db2777;">25 interações completas</strong> para testar tudo</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl" style="color: #db2777;">✓</span>
-                <span><strong style="color: #db2777;">Análise de perfil personalizada</strong></span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl" style="color: #db2777;">✓</span>
-                <span><strong style="color: #db2777;">Geração de metas e planos</strong></span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl" style="color: #db2777;">✓</span>
-                <span><strong style="color: #db2777;">Criação de materiais profissionais</strong></span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl" style="color: #db2777;">✓</span>
-                <span><strong style="color: #db2777;">Scripts e copys personalizados</strong></span>
-              </li>
+              <li class="flex items-start"><span class="mr-3 text-2xl" style="color: #db2777;">✓</span><span><strong style="color: #db2777;">Acesso real à Ivi MK</strong> com todas as funcionalidades</span></li>
+              <li class="flex items-start"><span class="mr-3 text-2xl" style="color: #db2777;">✓</span><span><strong style="color: #db2777;">25 interações completas</strong> para testar tudo</span></li>
+              <li class="flex items-start"><span class="mr-3 text-2xl" style="color: #db2777;">✓</span><span><strong style="color: #db2777;">Análise de perfil personalizada</strong></span></li>
+              <li class="flex items-start"><span class="mr-3 text-2xl" style="color: #db2777;">✓</span><span><strong style="color: #db2777;">Geração de metas e planos</strong></span></li>
+              <li class="flex items-start"><span class="mr-3 text-2xl" style="color: #db2777;">✓</span><span><strong style="color: #db2777;">Criação de materiais profissionais</strong></span></li>
+              <li class="flex items-start"><span class="mr-3 text-2xl" style="color: #db2777;">✓</span><span><strong style="color: #db2777;">Scripts e copys personalizados</strong></span></li>
             </ul>
           </div>
+
           <div class="text-center mb-6">
             <p class="text-3xl font-bold mb-2" style="color: #db2777;">Apenas R$ 9,90</p>
             <p class="text-lg" style="color: #6b7280;">Pagamento único via PIX</p>
           </div>
-          
-          </a>
+
+          <!-- BOTÃO REMOVIDO (sem fechar </a> solto) -->
+
           <p class="mt-6 text-center text-sm" style="color: #9ca3af;">
             Acesso liberado em até 5 minutos após confirmação do pagamento
           </p>
@@ -515,66 +471,29 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 mb-12">
-          <!-- Coluna 1 -->
           <div class="bg-white rounded-2xl p-8 shadow-xl">
-            <h3 class="text-2xl font-bold mb-6 text-center" style="color: #db2777;">
-              💎 Acesso Ilimitado
-            </h3>
+            <h3 class="text-2xl font-bold mb-6 text-center" style="color: #db2777;">💎 Acesso Ilimitado</h3>
             <ul class="space-y-4 text-lg" style="color: #4b5563;">
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Interações ilimitadas</strong> todos os dias</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Disponível 24h por dia</strong>, 7 dias por semana</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Atualizações constantes</strong> e melhorias</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Novos recursos</strong> incluídos automaticamente</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Suporte prioritário</strong> dedicado</span>
-              </li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Interações ilimitadas</strong> todos os dias</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Disponível 24h por dia</strong>, 7 dias por semana</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Atualizações constantes</strong> e melhorias</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Novos recursos</strong> incluídos automaticamente</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Suporte prioritário</strong> dedicado</span></li>
             </ul>
           </div>
 
-          <!-- Coluna 2 -->
           <div class="bg-white rounded-2xl p-8 shadow-xl">
-            <h3 class="text-2xl font-bold mb-6 text-center" style="color: #db2777;">
-              🚀 Crescimento Acelerado
-            </h3>
+            <h3 class="text-2xl font-bold mb-6 text-center" style="color: #db2777;">🚀 Crescimento Acelerado</h3>
             <ul class="space-y-4 text-lg" style="color: #4b5563;">
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Acompanhamento contínuo</strong> da sua evolução</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Planejamento estratégico</strong> de longo prazo</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Materiais ilimitados</strong> (PDFs, copys, scripts)</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Mentoria completa</strong> para DIQs e Diretoras</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3" style="color: #db2777;">✓</span>
-                <span><strong>Gestão de equipe</strong> e desenvolvimento de líderes</span>
-              </li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Acompanhamento contínuo</strong> da sua evolução</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Planejamento estratégico</strong> de longo prazo</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Materiais ilimitados</strong> (PDFs, copys, scripts)</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Mentoria completa</strong> para DIQs e Diretoras</span></li>
+              <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span><strong>Gestão de equipe</strong> e desenvolvimento de líderes</span></li>
             </ul>
           </div>
         </div>
 
-        <!-- Comparação -->
         <div class="bg-gradient-to-br from-pink-600 to-pink-800 rounded-3xl p-10 shadow-2xl text-white">
           <h3 class="text-3xl font-bold mb-8 text-center">💰 Faça as contas:</h3>
           <div class="grid md:grid-cols-2 gap-8 text-center">
@@ -583,40 +502,35 @@
               <p class="text-4xl font-bold mb-2">R$ 9,90</p>
               <p class="text-lg opacity-90">≈ R$ 0,40 por interação</p>
             </div>
-            <div
-              class="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm border-4 border-yellow-300">
+            <div class="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm border-4 border-yellow-300">
               <p class="text-xl mb-2">Assinatura Mensal</p>
               <p class="text-4xl font-bold mb-2">R$ 39,90</p>
-              <p class="text-lg opacity-90">
-                <strong>Interações ILIMITADAS</strong>
-              </p>
-              <p class="text-sm mt-2 font-bold text-yellow-300">
-                Melhor custo-benefício! 🏆
-              </p>
+              <p class="text-lg opacity-90"><strong>Interações ILIMITADAS</strong></p>
+              <p class="text-sm mt-2 font-bold text-yellow-300">Melhor custo-benefício! 🏆</p>
             </div>
           </div>
           <div class="mt-8 text-center">
-            <p class="text-2xl font-bold mb-4">
-              Com apenas 100 interações/mês, você paga:
-            </p>
-            <p class="text-4xl font-bold mb-2" style="color: #fef08a;">
-              R$ 0,40 por interação
-            </p>
+            <p class="text-2xl font-bold mb-4">Com apenas 100 interações/mês, você paga:</p>
+            <p class="text-4xl font-bold mb-2" style="color: #fef08a;">R$ 0,40 por interação</p>
             <p class="text-xl">Quanto mais você usa, menor o custo!</p>
           </div>
         </div>
 
-        <!-- CTA Extra -->
+        <!-- CTA Extra (sem botões de compra) -->
         <div class="mt-12 text-center">
           <p class="text-2xl font-bold mb-6" style="color: #831843;">
             🎯 Pronta para turbinar sua carreira Mary Kay?
           </p>
-          <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-           
-            </a>
-           
-            </a>
+
+          <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-xl border-2" style="border-color:#fde68a;">
+            <p class="text-xl md:text-2xl font-semibold" style="color:#4b5563;">
+              Se você recebeu um link de adesão, use ele agora.
+            </p>
+            <p class="mt-3 text-lg" style="color:#6b7280;">
+              Em poucos minutos você já consegue abrir a Ivi e começar seu plano de 7 dias.
+            </p>
           </div>
+
           <p class="mt-6 text-lg" style="color: #6b7280;">
             Cancele quando quiser • Sem fidelidade
           </p>
@@ -632,46 +546,16 @@
         </h2>
         <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
           <ul class="grid md:grid-cols-2 gap-4 text-lg" style="color: #4b5563;">
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Crescimento acelerado na carreira</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Mais segurança para orientar consultoras</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Direção clara para cada passo</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Zero alucinação, zero achismo — tudo oficial</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Mais organização como executiva</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Metas estruturadas com lógica e clareza</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Acompanhamento constante</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Apoio emocional e profissional equilibrado</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Orientações que uma líder humana daria</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3" style="color: #db2777;">✓</span>
-              <span>Melhoria do desempenho de todo o time</span>
-            </li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Crescimento acelerado na carreira</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Mais segurança para orientar consultoras</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Direção clara para cada passo</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Zero alucinação, zero achismo — tudo oficial</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Mais organização como executiva</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Metas estruturadas com lógica e clareza</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Acompanhamento constante</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Apoio emocional e profissional equilibrado</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Orientações que uma líder humana daria</span></li>
+            <li class="flex items-start"><span class="mr-3" style="color: #db2777;">✓</span><span>Melhoria do desempenho de todo o time</span></li>
           </ul>
         </div>
       </div>
@@ -681,7 +565,6 @@
     <section class="w-full py-12 px-6">
       <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
-          <!-- Gráfico -->
           <div class="bg-white rounded-3xl p-8 shadow-2xl">
             <svg viewBox="0 0 400 400" class="w-full h-auto">
               <rect width="400" height="400" fill="#fdf2f8" />
@@ -690,27 +573,13 @@
               </text>
               <line x1="50" y1="350" x2="50" y2="80" stroke="#9ca3af" stroke-width="2" />
               <line x1="50" y1="350" x2="370" y2="350" stroke="#9ca3af" stroke-width="2" />
-              <text x="40" y="100" font-size="12" fill="#6b7280" text-anchor="end">
-                Alta
-              </text>
-              <text x="40" y="220" font-size="12" fill="#6b7280" text-anchor="end">
-                Média
-              </text>
-              <text x="40" y="340" font-size="12" fill="#6b7280" text-anchor="end">
-                Baixa
-              </text>
-              <text x="80" y="370" font-size="11" fill="#6b7280" text-anchor="middle">
-                Mês 1
-              </text>
-              <text x="160" y="370" font-size="11" fill="#6b7280" text-anchor="middle">
-                Mês 3
-              </text>
-              <text x="240" y="370" font-size="11" fill="#6b7280" text-anchor="middle">
-                Mês 6
-              </text>
-              <text x="320" y="370" font-size="11" fill="#6b7280" text-anchor="middle">
-                Mês 12
-              </text>
+              <text x="40" y="100" font-size="12" fill="#6b7280" text-anchor="end">Alta</text>
+              <text x="40" y="220" font-size="12" fill="#6b7280" text-anchor="end">Média</text>
+              <text x="40" y="340" font-size="12" fill="#6b7280" text-anchor="end">Baixa</text>
+              <text x="80" y="370" font-size="11" fill="#6b7280" text-anchor="middle">Mês 1</text>
+              <text x="160" y="370" font-size="11" fill="#6b7280" text-anchor="middle">Mês 3</text>
+              <text x="240" y="370" font-size="11" fill="#6b7280" text-anchor="middle">Mês 6</text>
+              <text x="320" y="370" font-size="11" fill="#6b7280" text-anchor="middle">Mês 12</text>
               <path d="M 80 320 Q 160 280 240 180 Q 280 140 320 100"
                 stroke="#db2777" stroke-width="4" fill="none" stroke-linecap="round" />
               <path d="M 80 320 Q 160 280 240 180 Q 280 140 320 100 L 320 350 L 80 350 Z"
@@ -719,18 +588,10 @@
               <circle cx="160" cy="260" r="6" fill="#db2777" />
               <circle cx="240" cy="180" r="6" fill="#db2777" />
               <circle cx="320" cy="100" r="8" fill="#fbbf24" />
-              <text x="80" y="310" font-size="11" fill="#831843" text-anchor="middle" font-weight="bold">
-                Início
-              </text>
-              <text x="160" y="250" font-size="11" fill="#831843" text-anchor="middle" font-weight="bold">
-                Progresso
-              </text>
-              <text x="240" y="170" font-size="11" fill="#831843" text-anchor="middle" font-weight="bold">
-                Aceleração
-              </text>
-              <text x="320" y="88" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">
-                🏆 Topo
-              </text>
+              <text x="80" y="310" font-size="11" fill="#831843" text-anchor="middle" font-weight="bold">Início</text>
+              <text x="160" y="250" font-size="11" fill="#831843" text-anchor="middle" font-weight="bold">Progresso</text>
+              <text x="240" y="170" font-size="11" fill="#831843" text-anchor="middle" font-weight="bold">Aceleração</text>
+              <text x="320" y="88" font-size="12" fill="#fbbf24" text-anchor="middle" font-weight="bold">🏆 Topo</text>
               <text x="70" y="295" font-size="20">🌱</text>
               <text x="150" y="240" font-size="22">📈</text>
               <text x="230" y="160" font-size="24">🚀</text>
@@ -738,18 +599,11 @@
             </svg>
           </div>
 
-          <!-- Texto -->
           <div class="bg-gradient-to-br from-pink-600 to-pink-800 rounded-3xl p-8 md:p-12 shadow-2xl text-white">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">💖 Em resumo:</h2>
-            <p class="text-xl md:text-2xl leading-relaxed mb-4">
-              A Ivi MK é a mentora que toda consultora sempre quis,
-            </p>
-            <p class="text-xl md:text-2xl leading-relaxed mb-4">
-              a líder que toda DIQ precisa
-            </p>
-            <p class="text-xl md:text-2xl leading-relaxed mb-6">
-              e o suporte que toda diretora merece.
-            </p>
+            <p class="text-xl md:text-2xl leading-relaxed mb-4">A Ivi MK é a mentora que toda consultora sempre quis,</p>
+            <p class="text-xl md:text-2xl leading-relaxed mb-4">a líder que toda DIQ precisa</p>
+            <p class="text-xl md:text-2xl leading-relaxed mb-6">e o suporte que toda diretora merece.</p>
             <p class="text-lg md:text-xl leading-relaxed font-semibold">
               Ela leva você da consultoria à diretoria — <br />
               e da diretoria ao topo da carreira — <br />
@@ -758,7 +612,6 @@
           </div>
         </div>
 
-        <!-- Mensagem de impacto -->
         <div class="bg-gradient-to-r from-pink-600 to-pink-800 rounded-3xl p-12 shadow-2xl text-center">
           <p class="text-3xl md:text-4xl font-bold text-white mb-4 whitespace-nowrap">
             🌟 A Transformação Começa Agora! 🌟
@@ -770,14 +623,12 @@
       </div>
     </section>
 
-    <!-- Pricing & CTA final -->
-    <section class="w-full py-16 px-6"
-      style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);">
+    <!-- Pricing (sem botão) -->
+    <section class="w-full py-16 px-6" style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);">
       <div class="max-w-2xl mx-auto text-center">
         <div class="bg-white rounded-3xl p-10 shadow-2xl pulse-glow">
           <div class="mb-6">
-            <span
-              class="inline-block bg-red-100 text-red-600 px-4 py-2 rounded-full font-bold text-sm mb-4">
+            <span class="inline-block bg-red-100 text-red-600 px-4 py-2 rounded-full font-bold text-sm mb-4">
               🔥 PROMOÇÃO ESPECIAL
             </span>
           </div>
@@ -786,101 +637,91 @@
             <p id="original-price" class="text-3xl font-bold price-strike mb-4" style="color: #9ca3af;">
               R$ 59,90
             </p>
-            <p class="text-lg mb-2" style="color: #831843; font-weight: 600;">
-              Por apenas
-            </p>
-            <p id="promo-price" class="text-6xl font-bold mb-2" style="color: #db2777;">
-              R$ 39,90
-            </p>
+            <p class="text-lg mb-2" style="color: #831843; font-weight: 600;">Por apenas</p>
+            <p id="promo-price" class="text-6xl font-bold mb-2" style="color: #db2777;">R$ 39,90</p>
             <p class="text-xl" style="color: #6b7280;">por mês</p>
           </div>
-    
-            
-          </a>
+
+          <!-- BOTÃO REMOVIDO (sem </a> solto) -->
+
           <p class="mt-6 text-sm" style="color: #9ca3af;">
             Cancele quando quiser • Suporte dedicado
           </p>
         </div>
       </div>
-      <!-- CTA FINAL (sem botão de compra; incentivo ao clique no link recebido) -->
-<section class="w-full py-16 px-6"
-  style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);">
-  <div class="max-w-4xl mx-auto">
+    </section>
 
-    <div class="bg-gradient-to-br from-pink-600 to-pink-800 rounded-3xl p-10 md:p-12 shadow-2xl text-white text-center">
-      <p class="text-sm md:text-base font-bold tracking-wide opacity-95 mb-4">
-        ✨ ÚLTIMO PASSO
-      </p>
-
-      <h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-        Agora é com você: <br class="hidden md:block" />
-        transforme sua rotina Mary Kay ainda hoje 🌸
-      </h2>
-
-      <p class="text-xl md:text-2xl text-pink-100 leading-relaxed mb-8">
-        Você já viu tudo o que a Ivi MK faz. O próximo passo é simples:
-        <strong class="text-white">clique no link que você recebeu</strong> e finalize sua adesão agora.
-      </p>
-
-      <div class="grid md:grid-cols-3 gap-4 text-left mt-10">
-        <div class="bg-white/15 rounded-2xl p-6 backdrop-blur-sm">
-          <p class="text-lg font-bold mb-2">⏱️ Comece em minutos</p>
-          <p class="text-pink-100 leading-relaxed">
-            Assim que confirmar, você já pode abrir a Ivi e iniciar seu plano de ação.
-          </p>
-        </div>
-
-        <div class="bg-white/15 rounded-2xl p-6 backdrop-blur-sm border-2 border-yellow-300/60">
-          <p class="text-lg font-bold mb-2">🔥 Não deixe pra “depois”</p>
-          <p class="text-pink-100 leading-relaxed">
-            “Depois” vira semana. Semana vira mês. Clique agora e mantenha seu foco no topo.
-          </p>
-        </div>
-
-        <div class="bg-white/15 rounded-2xl p-6 backdrop-blur-sm">
-          <p class="text-lg font-bold mb-2">📈 Evolução guiada</p>
-          <p class="text-pink-100 leading-relaxed">
-            A Ivi organiza suas metas, sua agenda e sua estratégia com clareza executiva.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-10 bg-white/10 rounded-2xl p-6 md:p-8">
-        <p class="text-2xl md:text-3xl font-extrabold mb-3">
-          Clique no link que você recebeu e faça agora a sua adesão! ✅
-        </p>
-        <p class="text-pink-100 text-lg md:text-xl leading-relaxed">
-          Se você está lendo isso, é porque já decidiu crescer.
-          <strong class="text-white">Só falta um clique.</strong>
+    <!-- MICRO PRESSÃO POSITIVA (melhoria final) -->
+    <section class="w-full px-6 -mt-6">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-center text-xl md:text-2xl font-bold mb-8" style="color:#831843;">
+          Quem decide rápido, cresce rápido. Se você já recebeu o link, finalize agora.
         </p>
       </div>
+    </section>
 
-      <div class="mt-10 flex flex-col md:flex-row items-center justify-center gap-4">
-        <div class="bg-white/15 rounded-2xl px-6 py-4">
-          <p class="text-lg font-bold">💎 Dica rápida</p>
-          <p class="text-pink-100">
-            Abra o link no celular para já salvar a Ivi no seu ChatGPT.
+    <!-- CTA FINAL (sem botão de compra; incentivo ao clique no link recebido) -->
+    <section class="w-full py-16 px-6" style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-br from-pink-600 to-pink-800 rounded-3xl p-10 md:p-12 shadow-2xl text-white text-center">
+          <p class="text-sm md:text-base font-bold tracking-wide opacity-95 mb-4">✨ ÚLTIMO PASSO</p>
+
+          <h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+            Agora é com você: <br class="hidden md:block" />
+            transforme sua rotina Mary Kay ainda hoje 🌸
+          </h2>
+
+          <p class="text-xl md:text-2xl text-pink-100 leading-relaxed mb-8">
+            Você já viu tudo o que a Ivi MK faz. O próximo passo é simples:
+            <strong class="text-white">clique no link que você recebeu</strong> e finalize sua adesão agora.
           </p>
-        </div>
-        <div class="bg-white/15 rounded-2xl px-6 py-4">
-          <p class="text-lg font-bold">🧠 Sugestão</p>
-          <p class="text-pink-100">
-            Assim que entrar, digite: <strong class="text-white">“Me faça um plano de 7 dias”</strong>.
+
+          <div class="grid md:grid-cols-3 gap-4 text-left mt-10">
+            <div class="bg-white/15 rounded-2xl p-6 backdrop-blur-sm">
+              <p class="text-lg font-bold mb-2">⏱️ Comece em minutos</p>
+              <p class="text-pink-100 leading-relaxed">Assim que confirmar, você já pode abrir a Ivi e iniciar seu plano de ação.</p>
+            </div>
+
+            <div class="bg-white/15 rounded-2xl p-6 backdrop-blur-sm border-2 border-yellow-300/60">
+              <p class="text-lg font-bold mb-2">🔥 Não deixe pra “depois”</p>
+              <p class="text-pink-100 leading-relaxed">“Depois” vira semana. Semana vira mês. Clique agora e mantenha seu foco no topo.</p>
+            </div>
+
+            <div class="bg-white/15 rounded-2xl p-6 backdrop-blur-sm">
+              <p class="text-lg font-bold mb-2">📈 Evolução guiada</p>
+              <p class="text-pink-100 leading-relaxed">A Ivi organiza suas metas, sua agenda e sua estratégia com clareza executiva.</p>
+            </div>
+          </div>
+
+          <div class="mt-10 bg-white/10 rounded-2xl p-6 md:p-8">
+            <p class="text-2xl md:text-3xl font-extrabold mb-3">
+              Clique no link que você recebeu e faça agora a sua adesão! ✅
+            </p>
+            <p class="text-pink-100 text-lg md:text-xl leading-relaxed">
+              Se você está lendo isso, é porque já decidiu crescer. <strong class="text-white">Só falta um clique.</strong>
+            </p>
+          </div>
+
+          <div class="mt-10 flex flex-col md:flex-row items-center justify-center gap-4">
+            <div class="bg-white/15 rounded-2xl px-6 py-4">
+              <p class="text-lg font-bold">💎 Dica rápida</p>
+              <p class="text-pink-100">Abra o link no celular para já salvar a Ivi no seu ChatGPT.</p>
+            </div>
+            <div class="bg-white/15 rounded-2xl px-6 py-4">
+              <p class="text-lg font-bold">🧠 Sugestão</p>
+              <p class="text-pink-100">Assim que entrar, digite: <strong class="text-white">“Me faça um plano de 7 dias”</strong>.</p>
+            </div>
+          </div>
+
+          <p class="mt-10 text-sm md:text-base text-pink-100 opacity-95">
+            🚀 Pronta para agir? Então volte na conversa, pegue o link e finalize agora.
           </p>
         </div>
       </div>
-
-      <p class="mt-10 text-sm md:text-base text-pink-100 opacity-95">
-        🚀 Pronta para agir? Então volte na conversa, pegue o link e finalize agora.
-      </p>
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <!-- Aviso Legal -->
-    <section class="w-full py-16 px-6"
-      style="background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);">
+    <section class="w-full py-16 px-6" style="background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #831843;">
           ⚖️ Aviso Importante
@@ -891,9 +732,7 @@
             exclusivamente para apoiar Consultoras Independentes Mary Kay em todos os estágios de carreira.
           </p>
           <p class="text-xl leading-relaxed mb-6" style="color: #4b5563;">
-            <strong style="color: #831843;">
-              Não temos relação direta ou indireta com a marca Mary Kay Inc.
-            </strong>
+            <strong style="color: #831843;">Não temos relação direta ou indireta com a marca Mary Kay Inc.</strong>
           </p>
           <p class="text-xl leading-relaxed" style="color: #6b7280;">
             Este é um produto desenvolvido de forma autônoma, com o objetivo de oferecer mentoria e orientação estratégica
@@ -964,7 +803,6 @@
   </div>
 
   <script>
-    // Conteúdo dos modais
     const modalContent = {
       privacy: {
         title: "🔒 Política de Privacidade",
@@ -1028,15 +866,11 @@
     }
 
     function closeModalOnOutside(event) {
-      if (event.target.id === 'modal') {
-        closeModal();
-      }
+      if (event.target.id === 'modal') closeModal();
     }
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
+      if (event.key === 'Escape') closeModal();
     });
   </script>
 </body>
